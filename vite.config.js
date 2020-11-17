@@ -4,6 +4,8 @@ module.exports = {
     // 必须以 ‘/‘ 结尾，不然会认为是package，且tsconfig.json也要改成这样式的
     '@/': path.join(__dirname, './client')
   },
+  outDir: 'docs',
+  assetsDir: 'statics',
   rollupInputOptions: {
     external: {
       // 类似于webpack的entry
