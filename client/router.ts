@@ -16,6 +16,6 @@ export default createRouter({
       component: () => import('./views/v-jsx.vue')
     }
   ],
-  history: createWebHistory()
+  history: createWebHashHistory()
 })
 
