@@ -1,7 +1,7 @@
 <template>
   <div class="todo-wrapper" v-if="todoItem" :style="todoItem.done ? { textDecoration: 'line-through' } : {}">
     <div class="todo-title">{{ todoItem.title }}</div>
-    <div class="todo-btn" @click="onDel">del</div>
+    <Button type="error" @click="onDel">del</Button>
   </div>
 </template>
 
@@ -9,8 +9,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { ListI } from '../store/types'
+import Button from './dumb/Button.vue'
 
 export default defineComponent({
+  components: { Button },
   props: {
     todoItem: {
       type: Object,
@@ -19,7 +21,7 @@ export default defineComponent({
   },
   methods: {
     onDel() {
-      this.$emit('on-del')
+      this.$emit('del')
     }
   }
 })
@@ -27,18 +29,21 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .todo-wrapper {
-  text-align: center;
-  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
   .todo-title {
-    display: inline-block;
-    border-bottom: 1px solid #f60;
+    flex: 1;
+    border-bottom: 1px dashed rebeccapurple;
+    text-align: left;
+    margin-right: 10px;
   }
   .todo-btn {
-    display: inline-block;
-    border: 1px solid red;
-    padding: 2px 3px;
+    border: 1px solid rgb(150, 145, 145);
+    padding: 2px 5px;
     border-radius: 4px;
-    margin-left: 10px;
   }
 }
 </style>

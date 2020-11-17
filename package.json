@@ -1,17 +1,18 @@
 {
   "name": "fe-skills-handle-book",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.1"
+    "vue": "^3.0.0-rc.1",
+    "vue-router": "^4.0.0-rc.3",
+    "vuex": "^4.0.0-beta.4"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.0-rc.1",
     "less": "^3.12.2",
-    "vite": "^1.0.0-rc.1",
-    "vuex": "^4.0.0-beta.4"
+    "vite": "^1.0.0-rc.1"
   }
 }

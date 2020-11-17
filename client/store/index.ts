@@ -1,10 +1,15 @@
 import { createStore, MutationTree, ActionContext, ActionTree, GetterTree, Store as VuexStore, CommitOptions, DispatchOptions } from 'vuex'
-import { StateI, ListI } from './types'
+import { StateI, ListI, ThemeI } from './types'
+export const themes: ThemeI[] = [
+  { color: '#fff', backgroundColor: '#1c2d48' },
+  { color: '#1c2d48', backgroundColor: 'aliceblue', border: '1px solid rgba(0, 0, 0, .06)' }
+]
 
 export enum MutationTypes {
   ADD_ITEM = 'ADD_ITEM',
   MOD_ITEM = 'MOD_ITEM',
-  DEL_ITEM = 'DEL_ITEM'
+  DEL_ITEM = 'DEL_ITEM',
+  MOD_THEME = 'MOD_THEME'
 }
 
 export enum ActionTypes {
@@ -17,6 +22,7 @@ export type Mutations<S = StateI> = {
   [MutationTypes.ADD_ITEM](state: S, payload: ListI): void
   [MutationTypes.MOD_ITEM](state: S, payload: { item: ListI, index: number }): void
   [MutationTypes.DEL_ITEM](state: S, payload: number): void
+  [MutationTypes.MOD_THEME](state: S, index: number): void
 }
 
 const mutations: MutationTree<StateI> & Mutations = {
@@ -35,6 +41,9 @@ const mutations: MutationTree<StateI> & Mutations = {
       ...state.todoList.slice(0, payload),
       ...state.todoList.slice(payload + 1)
     ]
+  },
+  [MutationTypes.MOD_THEME](state, index: number) {
+    state.theme = themes[index] || themes[0]
   }
 }
 
@@ -117,7 +126,8 @@ const store = createStore<StateI>({
         done: false,
         timestamp: new Date().valueOf()
       }
-    ]
+    ],
+    theme: themes[0]
   },
   getters,
   actions,

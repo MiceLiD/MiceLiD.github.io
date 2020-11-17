@@ -4,6 +4,11 @@ export interface ListI {
   timestamp: number
 }
 
+export interface ThemeI {
+  [p: string]: string
+}
+
 export interface StateI {
-  todoList: ListI[]
+  todoList: ListI[],
+  theme: ThemeI
 }

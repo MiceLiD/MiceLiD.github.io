@@ -1,7 +1,6 @@
 import { defineComponent, ref, reactive, computed, watch, watchEffect } from 'vue'
 
 export default defineComponent({
-  name: 'HelloWord',
   setup() {
     const count = reactive({ value: 1 })
     const times = computed(() => count.value)
